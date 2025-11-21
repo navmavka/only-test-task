@@ -1,0 +1,257 @@
+@import colors
+
+.Timeline
+  position: relative
+  margin-bottom: 200px
+  &:before
+    z-index: -1
+    content: ""
+    width: 1px
+    height: 100%
+    background-color: rgba(48, 62, 88, 0.1)
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+  &:after
+    z-index: -1
+    content: ""
+    width: 100%
+    height: 1px
+    background-color: rgba(48, 62, 88, 0.1)
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+  @media(max-width: 768px)
+    margin-bottom: 0
+    height: 80vh
+    &:before, &:after
+      content: none
+
+.circle-wrapper
+  position: relative
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  @media(max-width: 768px)
+    position: unset
+
+.circle-container
+  position: relative
+  width: 530px
+  height: 530px
+
+.circle
+  position: relative
+  width: 100%
+  height: 100%
+  border: 1px solid rgba(48, 62, 88, 0.2)
+  border-radius: 50%
+
+.point-wrapper
+  pointer-events: none
+
+
+.point
+  pointer-events: auto
+  border: none
+  background: transparent
+  padding: 0
+  margin: 0
+  cursor: pointer
+  width: 24px
+  height: 24px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  outline: none
+  transform-origin: center
+  position: absolute
+  &:hover .dot
+    width: 56px
+    height: 56px
+    background: $background
+    border: 1px solid rgba(48, 62, 88, 0.5)
+  .num
+    opacity: 0
+    transform: scale(0.6)
+    transition: opacity .25s ease, transform .25s ease
+  &.active .num
+    opacity: 1
+    transform: scale(1)
+  &:hover .num
+    opacity: 1
+    transform: scale(1)
+  .circle-label
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(50px, -50%)
+    white-space: nowrap
+    font-size: 20px
+    font-weight: bold
+    color: $black-blue
+    cursor: default
+    transition: opacity 0.4s ease
+
+
+.dot
+  display: inline-flex
+  position: absolute
+  align-items: center
+  justify-content: center
+  border-radius: 50%
+  box-sizing: border-box
+  transition: all .32s ease
+  transform-origin: center center
+
+.inactive .dot
+  width: 6px
+  height: 6px
+  background: #666
+
+.active .dot
+  position: absolute
+  width: 56px
+  height: 56px
+  background: $background
+  border: 1px solid rgba(48, 62, 88, 0.5)
+
+
+.num
+  font-size: 20px
+  color: $black-blue
+  user-select: none
+
+.navigation-info
+  position: absolute
+  bottom: 20px
+  left: 0
+  font-size: 14px
+  color: $black-blue
+  @media(max-width: 768px)
+    bottom: 0
+    left: 0
+    padding-left: 20px
+
+.navigation
+  position: absolute
+  left: 0
+  bottom: -50px
+  display: flex
+  gap: 8px
+  @media(max-width: 768px)
+    padding-left: 20px
+  button
+    height: 50px
+    width: 50px
+    color: white
+    cursor: pointer
+    border: 1px solid rgba(48, 62, 88, 0.5)
+    border-radius: 50%
+    padding: 20px
+    &.prev
+      background: url("@/assets/arrow.svg") no-repeat center
+      background-size: 8px
+    &.next
+      background: url("@/assets/arrow.svg") no-repeat center
+      background-size: 8px
+      transform: rotate(180deg)
+    &:disabled
+      opacity: 0.5
+      cursor: default
+    @media(max-width: 768px)
+      width: 30px
+      height: 30px
+      &.prev, &.next
+        background-size: 6px
+        padding: 0
+
+.bigYears
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  display: flex
+  flex-direction: row
+  font-size: clamp(40px, 10vw, 8.5rem)
+  font-weight: bold
+  z-index: -1
+  h2:first-child
+    color: $iris
+  h2:last-child
+    color: $fuschina
+  @media(max-width: 768px)
+    top: 160px
+
+.navDots
+  display: flex
+  flex-direction: row
+  position: absolute
+  bottom: -40px
+  gap: 8px
+  .navDot
+    width: 8px
+    height: 8px
+    background: $black-blue
+    border: none
+    border-radius: 50%
+
+.card-slider
+  position: absolute
+  max-width: 1200px
+  bottom: -220px
+
+  @media (max-width: 768px)
+    max-width: 100%
+    bottom: 40px
+    opacity: 1
+    padding: 0 20px
+    .swiper-slide
+      opacity: .5
+      transition: opacity .3s ease
+
+  .swiper-slide-active
+    opacity: 1
+  .card
+    width: 320px
+    @media (max-width: 768px)
+      max-width: 180px
+    h3
+      color: $blue
+      padding-bottom: 15px
+      font-size: 25px
+      @media(max-width: 768px)
+        font-size: 19px
+    p
+      color: $black-blue
+      font-size: 20px
+      @media (max-width: 768px)
+        font-size: 14px
+  button
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    border: none
+    position: absolute
+    background-color: white
+    z-index: 5
+    &.slider-prev
+      background-image: url("@/assets/arrow.svg")
+      background-repeat: no-repeat
+      background-position: center
+      background-size: 7px
+      position: absolute
+      top: 50%
+      left: -80px
+    &.slider-next
+      background-image: url("@/assets/arrow.svg")
+      background-repeat: no-repeat
+      background-position: center
+      background-size: 7px
+      transform: rotate(180deg)
+      position: absolute
+      top: 50%
+      right: -80px
