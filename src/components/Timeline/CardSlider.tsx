@@ -57,7 +57,7 @@ export const CardSlider = ({ info = [] }: CardSliderProps) => {
 
       <Swiper
         slidesPerView={isMobile ? 1.5 : 3}
-        spaceBetween={isMobile ? 30 : 100}
+        spaceBetween={isMobile ? 30 : 80}
         onSwiper={handleSwiperInit}
         onSlideChange={handleSlideChange}
         allowTouchMove={true}
