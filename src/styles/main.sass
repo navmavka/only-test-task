@@ -1,5 +1,5 @@
+@use 'colors' as *
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap')
-@import colors
 
 *
   padding: 0
@@ -9,7 +9,7 @@
   line-height: 1.2
 
 @function col($w)
-  @return 100vw / 24 * $w
+  @return calc(100vw / 24 * $w)
 
 .App
   min-height: 100vh
